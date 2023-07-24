@@ -15,7 +15,7 @@ export const userColumns = [
     },
     {
       field: "price",
-      headerName: "Стоимость",
+      headerName: "Стоимость (₽)",
       width: 230,
     },
   

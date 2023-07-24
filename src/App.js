@@ -4,6 +4,7 @@ import List from "./pages/list/List";
 import Single from "./pages/single/Single";
 import Single2 from "./pages/single2/Single2"
 import New from "./pages/new/New";
+import Edit from "./pages/editProducts/Edit"
 import List2 from "./pages/list2/List2";
 import List3 from "./pages/list3/List3"
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -35,6 +36,13 @@ function App() {
                 path="new"
                 element={<New inputs={productInputs} title="Добавить новое блюдо" />}
               />
+              <Route
+                path=":productId/edit"
+                element={<Edit inputs={productInputs} title="Редактировать блюдо" />}
+              />
+              
+                
+
             </Route>
 
             <Route path="orders">

@@ -90,7 +90,7 @@ const Single2 = () => {
         <Navbar />
         <div className="top">
           <div className="left">
-            <div className="editButton">Изменить</div>
+            <div className="editButton" onclick="window.location.href = 'http://example.com';">Изменить</div>
             <h1 className="title">Информация</h1>
             <div className="item">
               <div className="details">
