@@ -26,22 +26,41 @@ const New = ({ inputs, title }) => {
     else{
       typik = 1;
     }
-    axios({
-      method: 'post',
-      url: 'http://80.90.186.129:3000/api/dish/create',
-      headers: {},
-      data: {
-        "price": parseInt(formData.price),
-        "type": typik,
-        "description": formData.description,
-        "name": formData.name,
-        "imageUrl": URL.createObjectURL(file)
-      }
-    });
-    navigate('/products');
-  }
+
+    const amogus = new FormData();
+    let sesc = "";
+    amogus.append("files", file);
+
+
+    axios.post("http://localhost:3000/upload_files", amogus, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        }
+      }).then((response) => {
+        sesc = response.data.link
+        console.log(sesc);
+       })
+
+
+   setTimeout(
+    function () { axios({
+        method: 'post',
+        url: 'http://80.90.186.129:3000/api/dish/create',
+        headers: {},
+        data: {
+          "price": parseInt(formData.price),
+          "type": typik,
+          "description": formData.description,
+          "name": formData.name,
+          "imageUrl": sesc
+        }
+      });
+      navigate('/products'); 
+    }, 500);
+
     
     
+    }   
 };
 
   const handleChange = (event) => {
